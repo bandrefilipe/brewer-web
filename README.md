@@ -10,11 +10,12 @@ A containerized micro service which provides web content (HTML, CSS, JS) for the
 |:---:|:---:|:---:|:---:|:---:|:---:|
 - Java 11
 - Spring Boot 2
+  - Web MVC
 - Spring Cloud Config
 - Spring Cloud Circuit Breaker
   - Resilience4j
 - Thymeleaf 3
-- Bootstrap
+- Bootstrap 3
 - Javascript
 - Docker
 - Gradle

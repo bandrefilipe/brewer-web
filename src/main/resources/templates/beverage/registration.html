@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>Hello, Thymeleaf!</h1>
+</body>
+
+<div th:each="error : ${#fields.detailedErrors('${beverage.*}')}">
+    <span th:text="${error.message}"></span>
+</div>
+
+<form method="POST" th:object="${beverage}">
+    <span th:text="${message}"></span>
+    <br>
+
+    <label for="#sku">SKU</label>
+    <input type="text" id="#sku" th:field="*{sku}">
+    <br>
+
+    <label for="#name">Name</label>
+    <input type="text" id="#name" th:field="*{name}">
+    <br>
+
+    <label for="#description">Description</label>
+    <textarea rows="3" cols="30" id="#description" th:field="*{description}"></textarea>
+    <br>
+
+    <input type="submit" value="Save">
+</form>
+</html>
