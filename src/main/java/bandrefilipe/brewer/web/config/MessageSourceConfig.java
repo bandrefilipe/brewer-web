@@ -30,7 +30,7 @@ class MessageSourceConfig {
      */
     @Bean
     MessageSource messageSource() {
-        log.debug("Creating bean 'messageSource'");
+        log.debug("Creating bean MessageSource");
         final var messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasename("classpath:messages");
         messageSource.setDefaultEncoding(StandardCharsets.UTF_8.name());

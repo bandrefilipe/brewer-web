@@ -30,10 +30,10 @@ class DefaultLocaleConfig {
 
     @Bean
     Locale defaultLocale() {
-        log.debug("Creating bean 'defaultLocale'");
+        log.debug("Configuring default locale");
         Locale.setDefault(validLocales.getOrDefault(defaultLocale, Locale.US));
-        final var result = Locale.getDefault();
-        log.debug("Default locale set to {}", result);
-        return result;
+        final var locale = Locale.getDefault();
+        log.debug("Default locale set to {}", locale);
+        return locale;
     }
 }

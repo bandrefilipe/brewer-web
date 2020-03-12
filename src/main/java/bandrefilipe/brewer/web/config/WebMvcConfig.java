@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -38,9 +39,15 @@ class WebMvcConfig implements WebMvcConfigurer {
      */
     @Override
     public Validator getValidator() {
-        log.debug("Creating bean 'localValidatorFactory'");
+        log.debug("Creating LocalValidationFactoryBean");
         final var localValidatorFactoryBean = new LocalValidatorFactoryBean();
         localValidatorFactoryBean.setValidationMessageSource(messageSource);
         return localValidatorFactoryBean;
+    }
+
+    @Override
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+        log.debug("Adding resource handler for static content");
+        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
     }
 }
