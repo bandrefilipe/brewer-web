@@ -1,30 +1,112 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default-layout}">
 <body>
-<h1>Hello, Thymeleaf!</h1>
-</body>
+    <section class="aw-layout-content  js-content" layout:fragment="content">
+        <div class="page-header">
+            <div class="container-fluid">
+                <h1>
+                    Beverage Registration
+                </h1>
+            </div>
+        </div>
 
-<div th:each="error : ${#fields.detailedErrors('${beverage.*}')}">
-    <span th:text="${error.message}"></span>
+        <div class="container-fluid">
+
+            <!--            <div class="alert  alert-danger  alert-dismissible" role="alert">-->
+            <!--                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>-->
+            <!--                </button>-->
+            <!--                <i class="fa  fa-exclamation-circle"></i> Já existe um produto com o nome informado.-->
+            <!--            </div>-->
+
+            <form method="POST" th:object="${beverage}" class="form-vertical  js-form-loading">
+
+                <div class="row">
+                    <div class="col-sm-2  form-group">
+                        <label for="_sku">SKU</label>
+                        <input id="_sku" type="text" class="form-control"/>
+                    </div>
+
+                    <div class="col-sm-10  form-group">
+                        <label for="_name">Name</label>
+                        <input id="_name" type="text" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="_description">Description</label>
+                    <textarea id="_description" rows="3" class="form-control"></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3  form-group">
+                        <label for="_type">Type</label>
+                        <select id="_type" class="form-control">
+                            <option value="">Select type</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-3  form-group">
+                        <label for="_flavor">Flavor</label>
+                        <select id="_flavor" class="form-control">
+                            <option value="">Select flavor</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-3  form-group">
+                        <label for="_alcohol-content">Alcohol Content</label>
+                        <div class="input-group">
+                            <input id="_alcohol-content" type="text" class="form-control  js-decimal"/>
+                            <div class="input-group-addon">%</div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3  col-sm-6  form-group">
+                        <label for="_origin">Origin</label>
+                        <div id="_origin">
+                            <div class="radio  radio-inline">
+                                <input type="radio" name="origin">
+                                <label>National</label>
+                            </div>
+                            <div class="radio  radio-inline">
+                                <input type="radio" name="origin">
+                                <label>International</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3  form-group">
+                        <label for="_price">Price</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">$</div>
+                            <input id="_price" type="text" class="form-control  js-decimal"/>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3  form-group">
+                        <label for="_commission">Commission</label>
+                        <div class="input-group">
+                            <input id="_commission" type="text" class="form-control  js-decimal"/>
+                            <div class="input-group-addon">%</div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3  form-group">
+                        <label for="_stock">Stock</label>
+                        <input id="_stock" type="text" class="form-control  js-integer"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn  btn-primary" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </section>
 </div>
-
-<form method="POST" th:object="${beverage}">
-    <span th:text="${message}"></span>
-    <br>
-
-    <label for="#sku">SKU</label>
-    <input type="text" id="#sku" th:field="*{sku}">
-    <br>
-
-    <label for="#name">Name</label>
-    <input type="text" id="#name" th:field="*{name}">
-    <br>
-
-    <label for="#description">Description</label>
-    <textarea rows="3" cols="30" id="#description" th:field="*{description}"></textarea>
-    <br>
-
-    <input type="submit" value="Save">
-</form>
+</body>
 </html>
