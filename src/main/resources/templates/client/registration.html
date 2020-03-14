@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default-layout}">
+<head>
+    <title>Client Registration</title>
+</head>
+<body>
+    <section class="aw-layout-content  js-content" layout:fragment="content">
+        <div class="page-header">
+            <div class="container-fluid">
+                <h1>
+                    Client Registration
+                </h1>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+
+            <form method="POST" th:object="${client}" class="form-vertical  js-form-loading">
+
+                <div class="form-group">
+                    <label for="_name">Name</label>
+                    <input id="_name" type="text" class="form-control"/>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-12  form-group">
+                        <label for="_legal-entity">Legal Entity</label>
+                        <div id="_legal-entity">
+                            <div class="radio  radio-inline">
+                                <input type="radio" name="natural-person"/>
+                                <label>Natural Person</label>
+                            </div>
+                            <div class="radio  radio-inline">
+                                <input type="radio" name="legal-person"/>
+                                <label>Legal Person</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 col-sm-12  form-group">
+                        <label for="_tax-payer-id">Tax Payer ID</label>
+                        <input id="_tax-payer-id" type="text" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4  form-group">
+                        <label for="_phone">Phone</label>
+                        <input id="_phone" type="text" class="form-control"/>
+                    </div>
+
+                    <div class="col-sm-8  form-group">
+                        <label for="_email">E-mail</label>
+                        <input id="_email" type="text" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4  form-group">
+                        <label for="_address">Address</label>
+                        <input id="_address" type="text" class="form-control"/>
+                    </div>
+
+                    <div class="col-sm-4  form-group">
+                        <label for="_number">Number</label>
+                        <input id="_number" type="text" class="form-control"/>
+                    </div>
+
+                    <div class="col-sm-4  form-group">
+                        <label for="_additional">Additional</label>
+                        <input id="_additional" type="text" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4  form-group">
+                        <label for="_zip-code">Zip Code</label>
+                        <input id="_zip-code" type="text" class="form-control"/>
+                    </div>
+
+                    <div class="col-sm-4  form-group">
+                        <label for="_state">State</label>
+                        <select id="_state" class="form-control">
+                            <option value="">Select state</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-4  form-group">
+                        <label for="_city">City</label>
+                        <select id="_city" class="form-control">
+                            <option value="">Select city</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn  btn-primary" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
