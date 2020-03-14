@@ -11,4 +11,5 @@ final class View {
 
     public static final String BEVERAGE_REGISTRATION = "beverage/registration";
     public static final String CLIENT_REGISTRATION = "client/registration";
+    public static final String USER_REGISTRATION = "user/registration";
 }

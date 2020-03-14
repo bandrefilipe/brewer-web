@@ -11,4 +11,5 @@ final class API {
 
     public static final String BEVERAGES = "/beverages";
     public static final String CLIENTS = "/clients";
+    public static final String USERS = "/users";
 }

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default-layout}">
+<head>
+    <title>User Registration</title>
+</head>
+<body>
+<section class="aw-layout-content  js-content" layout:fragment="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <h1>
+                User Registration
+            </h1>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <form method="POST" th:object="${user}" class="form-vertical  js-form-loading">
+
+            <div class="form-group">
+                <label for="_name">Name</label>
+                <input id="_name" type="text" class="form-control"/>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6  form-group">
+                    <label for="_email">E-mail</label>
+                    <input id="_email" type="email" class="form-control"/>
+                </div>
+
+                <div class="col-sm-3  form-group">
+                    <label for="_birth-date">Birth date</label>
+                    <input id="_birth-date" type="date" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3  form-group">
+                    <label for="_password">Password</label>
+                    <input id="_password" type="password" class="form-control"/>
+                </div>
+
+                <div class="col-sm-3  form-group">
+                    <label for="_password-confirmation">Password confirmation</label>
+                    <input id="_password-confirmation" type="password" class="form-control"/>
+                </div>
+
+                <div class="col-sm-3  form-group">
+                    <label class="control-label">Status</label>
+                    <div class="checkbox">
+                        <input id="_status-active" type="checkbox"/>
+                        <label for="_status-active">Active</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Groups</label>
+                <div>
+                    <div class="checkbox  checkbox-inline">
+                        <input id="_group-admin" type="checkbox"/>
+                        <label for="_group-admin">Admin</label>
+                    </div>
+                    <div class="checkbox  checkbox-inline">
+                        <input id="_group-seller" type="checkbox">
+                        <label for="_group-seller">Seller</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn  btn-primary" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>
