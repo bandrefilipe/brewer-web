@@ -15,7 +15,11 @@ import static java.util.Optional.ofNullable;
 class MessageSourceImpl implements bandrefilipe.brewer.web.core.MessageSource {
 
     private static final String LOG_ENTRY = "M=getMessage: messageKey={} args={} defaultMessage={} locale={}";
+<<<<<<< HEAD
     private static final String LOG_RETURN = "M=getMessage: return={}";
+=======
+    private static final String LOG_RESULT = "M=getMessage: result={}";
+>>>>>>> master
 
     private final MessageSource messageSource;
     private Locale locale;
@@ -71,6 +75,7 @@ class MessageSourceImpl implements bandrefilipe.brewer.web.core.MessageSource {
                              final Locale locale) {
         log.debug(LOG_ENTRY, messageKey, args, defaultMessage, locale);
 
+<<<<<<< HEAD
         var message = defaultMessage;
         if (isNull(messageKey)) {
             log.debug(LOG_RETURN, message);
@@ -86,5 +91,22 @@ class MessageSourceImpl implements bandrefilipe.brewer.web.core.MessageSource {
         message = messageSource.getMessage(messageKey, args, defaultMessage, locale);
         log.debug(LOG_RETURN, message);
         return message;
+=======
+        var result = defaultMessage;
+        if (isNull(messageKey)) {
+            log.debug(LOG_RESULT, result);
+            return result;
+        }
+
+        if (isNull(locale)) {
+            result = messageSource.getMessage(messageKey, args, defaultMessage, this.locale);
+            log.debug(LOG_RESULT, result);
+            return result;
+        }
+
+        result = messageSource.getMessage(messageKey, args, defaultMessage, locale);
+        log.debug(LOG_RESULT, result);
+        return result;
+>>>>>>> master
     }
 }
