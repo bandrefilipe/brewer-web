@@ -5,6 +5,8 @@
       layout:decorate="~{layout/default-layout}">
 <head>
     <title>User Registration</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors/bootstrap-switch.min.css}"/>
 </head>
 <body>
 <section class="aw-layout-content  js-content" layout:fragment="content">
@@ -50,9 +52,8 @@
 
                 <div class="col-sm-3  form-group">
                     <label class="control-label">Status</label>
-                    <div class="checkbox">
-                        <input id="_status-active" type="checkbox"/>
-                        <label for="_status-active">Active</label>
+                    <div>
+                        <input id="_status-active" type="checkbox" class="js-checkbox-toggle" data-size="small" data-on-text="Active" data-off-text="Inactive"/>
                     </div>
                 </div>
             </div>
@@ -77,5 +78,9 @@
         </form>
     </div>
 </section>
+
+<th:block layout:fragment="javascript-extra">
+    <script th:src="@{/javascripts/vendors/bootstrap-switch.min.js}"></script>
+</th:block>
 </body>
 </html>
