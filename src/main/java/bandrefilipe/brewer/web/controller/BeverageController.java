@@ -1,10 +1,10 @@
 package bandrefilipe.brewer.web.controller;
 
 import bandrefilipe.brewer.web.core.MessageSource;
+import bandrefilipe.brewer.web.core.ValidationErrors;
 import bandrefilipe.brewer.web.model.Beverage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.Set;
-
-import static java.util.stream.Collectors.toSet;
 
 @Slf4j
 @Controller
@@ -26,11 +23,14 @@ import static java.util.stream.Collectors.toSet;
 class BeverageController {
 
     private final MessageSource messageSource;
+    private final ValidationErrors validationErrors;
 
     @Autowired
-    BeverageController(final MessageSource messageSource) {
+    BeverageController(final MessageSource messageSource,
+                       final ValidationErrors validationErrors) {
         super();
         this.messageSource = messageSource;
+        this.validationErrors = validationErrors;
     }
 
     @GetMapping(path = "/new")
@@ -44,18 +44,12 @@ class BeverageController {
                                           final Errors validation,
                                           final RedirectAttributes redirectAttributes) {
         if (validation.hasErrors()) {
-            log.debug("M=newBeverageRegistration: beverage={}, messages={}", beverage, getMessages(validation));
+            log.debug("M=newBeverageRegistration: beverage={}, messages={}",
+                    beverage, validationErrors.getMessages(validation));
             return newBeverageRegistration(beverage);
         }
         log.debug("M=newBeverageRegistration: beverage={}", beverage);
         redirectAttributes.addFlashAttribute("message", messageSource.getMessage("new.beverage.registration.success"));
         return Redirect.BEVERAGES_NEW;
-    }
-
-    private Set<String> getMessages(final Errors validation) {
-        return validation.getFieldErrors()
-                .stream()
-                .map(DefaultMessageSourceResolvable::getDefaultMessage)
-                .collect(toSet());
     }
 }
