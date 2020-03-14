@@ -3,6 +3,9 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/default-layout}">
+<head>
+    <title>Beverage Registration</title>
+</head>
 <body>
     <section class="aw-layout-content  js-content" layout:fragment="content">
         <div class="page-header">
@@ -75,11 +78,11 @@
                         <label for="_origin">Origin</label>
                         <div id="_origin">
                             <div class="radio  radio-inline">
-                                <input type="radio" name="origin">
+                                <input type="radio" name="origin"/>
                                 <label>National</label>
                             </div>
                             <div class="radio  radio-inline">
-                                <input type="radio" name="origin">
+                                <input type="radio" name="origin"/>
                                 <label>International</label>
                             </div>
                         </div>
@@ -117,6 +120,5 @@
 
         <div th:replace="beverage/type/registration"></div>
     </section>
-</div>
 </body>
 </html>
