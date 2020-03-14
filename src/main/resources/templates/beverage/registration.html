@@ -10,9 +10,7 @@
     <section class="aw-layout-content  js-content" layout:fragment="content">
         <div class="page-header">
             <div class="container-fluid">
-                <h1>
-                    Beverage Registration
-                </h1>
+                <h1>Beverage Registration</h1>
             </div>
         </div>
 
@@ -75,15 +73,15 @@
                     </div>
 
                     <div class="col-lg-3  col-sm-6  form-group">
-                        <label for="_origin">Origin</label>
-                        <div id="_origin">
+                        <label class="control-label">Origin</label>
+                        <div>
                             <div class="radio  radio-inline">
-                                <input type="radio" name="origin"/>
-                                <label>National</label>
+                                <input id="_origin-national" type="radio" name="origin"/>
+                                <label for="_origin-national">National</label>
                             </div>
                             <div class="radio  radio-inline">
-                                <input type="radio" name="origin"/>
-                                <label>International</label>
+                                <input id="_origin-international" type="radio" name="origin"/>
+                                <label for="_origin-international">International</label>
                             </div>
                         </div>
                     </div>
@@ -118,7 +116,7 @@
             </form>
         </div>
 
-        <div th:replace="beverage/type/registration"></div>
+        <div th:replace="beverage/type/registration-modal"></div>
     </section>
 </body>
 </html>
