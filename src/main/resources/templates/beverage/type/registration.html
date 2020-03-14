@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default-layout}">
+<head>
+    <title>Beverage Type Registration</title>
+</head>
+<body>
+<section class="aw-layout-content  js-content" layout:fragment="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <h1>Beverage Type Registration</h1>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <form method="POST" th:object="${beverageType}" class="form-vertical  js-form-loading">
+
+            <div class="form-group">
+                <label for="_type-name">Name</label>
+                <input id="_type-name" type="text" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <button class="btn  btn-primary" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>
