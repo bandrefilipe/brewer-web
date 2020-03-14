@@ -30,6 +30,7 @@ class ClientController {
     ClientController(final MessageSource messageSource,
                      final ValidationErrors validationErrors) {
         super();
+        log.debug("Creating bean {}", ClientController.class.getSimpleName());
         this.messageSource = messageSource;
         this.validationErrors = validationErrors;
     }

@@ -29,6 +29,7 @@ class BeverageController {
     BeverageController(final MessageSource messageSource,
                        final ValidationErrors validationErrors) {
         super();
+        log.debug("Creating bean {}", BeverageController.class.getSimpleName());
         this.messageSource = messageSource;
         this.validationErrors = validationErrors;
     }
