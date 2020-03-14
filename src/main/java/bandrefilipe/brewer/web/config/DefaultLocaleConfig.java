@@ -9,6 +9,10 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import static bandrefilipe.brewer.web.GlobalConstants.LOCALE_EN_US;
+import static bandrefilipe.brewer.web.GlobalConstants.LOCALE_ES;
+import static bandrefilipe.brewer.web.GlobalConstants.LOCALE_PT_BR;
+
 /**
  * Configures the default locale, as returned by {@link Locale#getDefault()}.
  */
@@ -23,15 +27,15 @@ class DefaultLocaleConfig {
 
     DefaultLocaleConfig() {
         validLocales = new HashMap<>();
-        validLocales.put("en_US", Locale.US);
-        validLocales.put("es", new Locale("es"));
-        validLocales.put("pt_BR", new Locale("pt", "BR"));
+        validLocales.put("en_US", LOCALE_EN_US);
+        validLocales.put("es", LOCALE_ES);
+        validLocales.put("pt_BR", LOCALE_PT_BR);
     }
 
     @Bean
     Locale defaultLocale() {
         log.debug("Configuring default locale");
-        Locale.setDefault(validLocales.getOrDefault(defaultLocale, Locale.US));
+        Locale.setDefault(validLocales.getOrDefault(defaultLocale, LOCALE_EN_US));
         final var locale = Locale.getDefault();
         log.debug("Default locale set to {}", locale);
         return locale;
