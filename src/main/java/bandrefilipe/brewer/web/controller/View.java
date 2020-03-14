@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 final class View {
 
     public static final String BEVERAGE_REGISTRATION = "beverage/registration";
+    public static final String CLIENT_REGISTRATION = "client/registration";
 }

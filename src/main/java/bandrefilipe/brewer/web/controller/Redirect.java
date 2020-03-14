@@ -9,5 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 final class Redirect {
 
-    public static final String BEVERAGES_NEW = "redirect:/beverages/new";
+    private static final String PREFIX = "redirect:";
+
+    public static final String BEVERAGES_NEW = PREFIX + API.BEVERAGES + "/new";
+    public static final String CLIENTS_NEW = PREFIX + API.CLIENTS + "/new";
 }
