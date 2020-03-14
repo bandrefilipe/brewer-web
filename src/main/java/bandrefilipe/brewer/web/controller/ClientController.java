@@ -3,6 +3,7 @@ package bandrefilipe.brewer.web.controller;
 import bandrefilipe.brewer.web.core.MessageSource;
 import bandrefilipe.brewer.web.core.ValidationErrors;
 import bandrefilipe.brewer.web.model.Beverage;
+import bandrefilipe.brewer.web.model.Client;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -34,13 +35,13 @@ class ClientController {
     }
 
     @GetMapping(path = "/new")
-    public String newClientRegistration(final Beverage beverage) {
+    public String newClientRegistration(final Client beverage) {
         log.trace("M=newClientRegistration");
         return View.CLIENT_REGISTRATION;
     }
 
     @PostMapping(path = "/new")
-    public String newClientRegistration(@Valid final Beverage client,
+    public String newClientRegistration(@Valid final Client client,
                                         final Errors validation,
                                         final RedirectAttributes redirectAttributes) {
         if (validation.hasErrors()) {
@@ -49,7 +50,7 @@ class ClientController {
             return newClientRegistration(client);
         }
         log.debug("M=newClientRegistration: client={}", client);
-        redirectAttributes.addFlashAttribute("message", messageSource.getMessage("new.beverage.registration.success"));
+        redirectAttributes.addFlashAttribute("message", messageSource.getMessage("new.client.registration.success"));
         return Redirect.CLIENTS_NEW;
     }
 }
