@@ -2,7 +2,7 @@ package bandrefilipe.brewer.web.controller;
 
 import bandrefilipe.brewer.web.core.MessageSource;
 import bandrefilipe.brewer.web.core.ValidationErrors;
-import bandrefilipe.brewer.web.model.Client;
+import bandrefilipe.brewer.web.model.City;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -18,39 +18,39 @@ import javax.validation.Valid;
 @Slf4j
 @Controller
 @RequestMapping(
-        path = API.CLIENTS,
+        path = API.CITIES,
         produces = MediaType.TEXT_HTML_VALUE)
-class ClientController {
+class CityController {
 
     private final MessageSource messageSource;
     private final ValidationErrors validationErrors;
 
     @Autowired
-    ClientController(final MessageSource messageSource,
-                     final ValidationErrors validationErrors) {
+    CityController(final MessageSource messageSource,
+                   final ValidationErrors validationErrors) {
         super();
-        log.debug("Creating bean {}", ClientController.class.getSimpleName());
+        log.debug("Creating bean {}", CityController.class.getSimpleName());
         this.messageSource = messageSource;
         this.validationErrors = validationErrors;
     }
 
     @GetMapping(path = "/new")
-    public String newClientRegistration(final Client beverage) {
-        log.trace("M=newClientRegistration");
-        return View.CLIENT_REGISTRATION;
+    public String newCityRegistration(final City city) {
+        log.trace("M=newCityRegistration");
+        return View.CITY_REGISTRATION;
     }
 
     @PostMapping(path = "/new")
-    public String newClientRegistration(@Valid final Client client,
-                                        final Errors validation,
-                                        final RedirectAttributes redirectAttributes) {
+    public String newCityRegistration(@Valid final City city,
+                                      final Errors validation,
+                                      final RedirectAttributes redirectAttributes) {
         if (validation.hasErrors()) {
-            log.debug("M=newClientRegistration: client={}, messages={}",
-                    client, validationErrors.getMessages(validation));
-            return newClientRegistration(client);
+            log.debug("M=newCityRegistration: city={}, messages={}",
+                    city, validationErrors.getMessages(validation));
+            return newCityRegistration(city);
         }
-        log.debug("M=newClientRegistration: client={}", client);
-        redirectAttributes.addFlashAttribute("message", messageSource.getMessage("new.client.registration.success"));
-        return Redirect.CLIENTS_NEW;
+        log.debug("M=newCityRegistration: city={}", city);
+        redirectAttributes.addFlashAttribute("message", messageSource.getMessage("new.city.registration.success"));
+        return Redirect.CITIES_NEW;
     }
 }

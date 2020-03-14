@@ -14,4 +14,5 @@ final class Redirect {
     public static final String BEVERAGES_NEW = PREFIX + API.BEVERAGES + "/new";
     public static final String CLIENTS_NEW = PREFIX + API.CLIENTS + "/new";
     public static final String USERS_NEW = PREFIX + API.CLIENTS + "/new";
+    public static final String CITIES_NEW = PREFIX + API.CITIES + "/new";
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default-layout}">
+<head>
+    <title>City Registration</title>
+</head>
+<body>
+<section class="aw-layout-content  js-content" layout:fragment="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <h1>City Registration</h1>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <form method="POST" th:object="${city}" class="form-vertical  js-form-loading">
+
+            <div class="row">
+                <div class="col-sm-4  form-group">
+                    <label for="_state">State</label>
+                    <select id="_state" class="form-control">
+                        <option value="">Select state</option>
+                    </select>
+                </div>
+
+                <div class="col-sm-8  form-group">
+                    <label for="_name">Name</label>
+                    <input id="_name" type="text" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn  btn-primary" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>
