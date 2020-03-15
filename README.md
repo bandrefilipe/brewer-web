@@ -2,7 +2,7 @@
 
 A containerized micro service which provides web content (HTML, CSS, JS) for the _Brewer_ project.
 
-[TODO]
+![Brewer Web's high level diagram](./diagrams/high_level_diagram.svg)
 
 ## Employed Technology
 
