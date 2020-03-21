@@ -20,7 +20,7 @@ import static bandrefilipe.brewer.web.GlobalConstants.LOCALE_PT_BR;
 @Configuration
 class DefaultLocaleConfig {
 
-    @Value("${locale.default}")
+    @Value("${app.locale.default}")
     private String defaultLocale;
 
     private final Map<String, Locale> validLocales;

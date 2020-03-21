@@ -1,4 +1,4 @@
-package bandrefilipe.brewer.web.service.impl;
+package bandrefilipe.brewer.web.repository.impl;
 
 import bandrefilipe.brewer.web.integration.response.AllBeverageTypesResponse;
 import bandrefilipe.brewer.web.model.BeverageType;
@@ -13,7 +13,7 @@ import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toList;
 
 @Component
-class BeverageServiceTranslator {
+class BeverageTranslator {
 
     List<BeverageType> translate(final Collection<AllBeverageTypesResponse> allBeverageTypesResponse) {
         return ofNullable(allBeverageTypesResponse)
