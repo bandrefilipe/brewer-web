@@ -1,5 +1,6 @@
-package bandrefilipe.brewer.web.core;
+package bandrefilipe.brewer.web.core.impl;
 
+import bandrefilipe.brewer.web.core.ValidationErrors;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
