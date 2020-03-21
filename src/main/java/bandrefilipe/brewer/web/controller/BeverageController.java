@@ -3,7 +3,6 @@ package bandrefilipe.brewer.web.controller;
 import bandrefilipe.brewer.web.core.MessageSource;
 import bandrefilipe.brewer.web.core.ValidationErrors;
 import bandrefilipe.brewer.web.model.Beverage;
-import bandrefilipe.brewer.web.model.BeverageFlavor;
 import bandrefilipe.brewer.web.model.BeverageType;
 import bandrefilipe.brewer.web.service.BeverageService;
 import lombok.extern.slf4j.Slf4j;
@@ -45,7 +44,7 @@ class BeverageController {
     public ModelAndView newBeverageRegistration(final Beverage beverage) {
         log.trace("M=newBeverageRegistration");
         final var modelAndView = new ModelAndView(View.BEVERAGE_REGISTRATION);
-        final var beverageRegistrationData = beverageService.getBeverageRegistrationData();
+        final var beverageRegistrationData = beverageService.asyncGetBeverageRegistrationData();
         modelAndView.addObject("flavors", beverageRegistrationData.getBeverageFlavors());
         modelAndView.addObject("types", beverageRegistrationData.getBeverageTypes());
         modelAndView.addObject("origins", beverageRegistrationData.getOrigins());
