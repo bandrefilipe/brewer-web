@@ -3,7 +3,9 @@ package bandrefilipe.brewer.web.controller;
 import bandrefilipe.brewer.web.core.MessageSource;
 import bandrefilipe.brewer.web.core.ValidationErrors;
 import bandrefilipe.brewer.web.model.Beverage;
+import bandrefilipe.brewer.web.model.BeverageFlavor;
 import bandrefilipe.brewer.web.model.BeverageType;
+import bandrefilipe.brewer.web.service.BeverageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -12,6 +14,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -25,26 +28,34 @@ class BeverageController {
 
     private final MessageSource messageSource;
     private final ValidationErrors validationErrors;
+    private final BeverageService beverageService;
 
     @Autowired
     BeverageController(final MessageSource messageSource,
-                       final ValidationErrors validationErrors) {
+                       final ValidationErrors validationErrors,
+                       final BeverageService beverageService) {
         super();
         log.debug("Creating bean {}", BeverageController.class.getSimpleName());
         this.messageSource = messageSource;
         this.validationErrors = validationErrors;
+        this.beverageService = beverageService;
     }
 
     @GetMapping(path = "/new")
-    public String newBeverageRegistration(final Beverage beverage) {
+    public ModelAndView newBeverageRegistration(final Beverage beverage) {
         log.trace("M=newBeverageRegistration");
-        return View.BEVERAGE_REGISTRATION;
+        final var modelAndView = new ModelAndView(View.BEVERAGE_REGISTRATION);
+        final var beverageRegistrationData = beverageService.getBeverageRegistrationData();
+        modelAndView.addObject("flavors", beverageRegistrationData.getBeverageFlavors());
+        modelAndView.addObject("types", beverageRegistrationData.getBeverageTypes());
+        modelAndView.addObject("origins", beverageRegistrationData.getOrigins());
+        return modelAndView;
     }
 
     @PostMapping(path = "/new")
-    public String newBeverageRegistration(@Valid final Beverage beverage,
-                                          final Errors validation,
-                                          final RedirectAttributes redirectAttributes) {
+    public ModelAndView newBeverageRegistration(@Valid final Beverage beverage,
+                                                final Errors validation,
+                                                final RedirectAttributes redirectAttributes) {
         if (validation.hasErrors()) {
             log.debug("M=newBeverageRegistration: beverage={}, messages={}",
                     beverage, validationErrors.getMessages(validation));
@@ -52,7 +63,7 @@ class BeverageController {
         }
         log.debug("M=newBeverageRegistration: beverage={}", beverage);
         redirectAttributes.addFlashAttribute("message", messageSource.getMessage("new.beverage.registration.success"));
-        return Redirect.BEVERAGES_NEW;
+        return new ModelAndView(Redirect.BEVERAGES_NEW);
     }
 
     @GetMapping(path = "/types/new")
