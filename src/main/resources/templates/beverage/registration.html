@@ -46,7 +46,8 @@
                         <label for="_type">Type</label>
                         <div class="bw-field-action">
                             <select id="_type" class="form-control">
-                                <option value="">Select type</option>
+                                <option value="" disabled selected>Select type...</option>
+                                <option th:each="type : ${types}" th:value="${type.id}" th:text="${type.name}"></option>
                             </select>
 
                             <div class="bw-field-action__icon">
@@ -60,7 +61,8 @@
                     <div class="col-sm-3  form-group">
                         <label for="_flavor">Flavor</label>
                         <select id="_flavor" class="form-control">
-                            <option value="">Select flavor</option>
+                            <option value="" disabled selected>Select flavor...</option>
+                            <option th:each="flavor : ${flavors}" th:value="${flavor.code}" th:text="${flavor.description}"></option>
                         </select>
                     </div>
 
@@ -75,14 +77,12 @@
                     <div class="col-lg-3  col-sm-6  form-group">
                         <label class="control-label">Origin</label>
                         <div>
-                            <div class="radio  radio-inline">
-                                <input id="_origin-national" type="radio" name="origin"/>
-                                <label for="_origin-national">National</label>
-                            </div>
-                            <div class="radio  radio-inline">
-                                <input id="_origin-international" type="radio" name="origin"/>
-                                <label for="_origin-international">International</label>
-                            </div>
+                            <th:block th:each="origin : ${origins}">
+                                <div class="radio  radio-inline">
+                                    <input th:id="|_origin-${#strings.toLowerCase(origin.description)}|" type="radio" th:value="${origin.code}" name="origin"/>
+                                    <label th:for="|_origin-${#strings.toLowerCase(origin.description)}|" th:text="${origin.description}"></label>
+                                </div>
+                            </th:block>
                         </div>
                     </div>
                 </div>
