@@ -2,11 +2,13 @@ package bandrefilipe.brewer.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 import java.util.Locale;
 
 import static bandrefilipe.brewer.web.GlobalConstants.LOCALE_EN_US;
 
+@EnableFeignClients
 @SpringBootApplication
 public class BrewerWebApplication {
 
