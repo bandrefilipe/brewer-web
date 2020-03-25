@@ -1,9 +1,12 @@
 package bandrefilipe.brewer.web.config;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+import static java.lang.Math.max;
 import static java.util.Optional.ofNullable;
 
 /**
@@ -11,6 +14,7 @@ import static java.util.Optional.ofNullable;
  */
 @Data
 @Configuration
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
 @ConfigurationProperties(prefix = "app.async.task.executor")
 class AsyncTaskExecutorProperties {
 
@@ -24,15 +28,15 @@ class AsyncTaskExecutorProperties {
      * Default: {@code 1}
      */
     public final int getCorePoolSize() {
-        return Math.max(corePoolSize, 1);
+        return max(corePoolSize, 1);
     }
 
     /**
      * Property: {@code app.sync.task.executor.maxPoolSize}<p>
-     * Default: {@link Integer#MAX_VALUE}
+     * Default: {@link AsyncTaskExecutorProperties#getCorePoolSize()}
      */
     public final int getMaxPoolSize() {
-        return Math.max(maxPoolSize, Integer.MAX_VALUE);
+        return max(maxPoolSize, getCorePoolSize());
     }
 
     /**
