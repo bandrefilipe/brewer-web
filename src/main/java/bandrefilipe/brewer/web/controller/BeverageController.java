@@ -2,8 +2,8 @@ package bandrefilipe.brewer.web.controller;
 
 import bandrefilipe.brewer.web.core.MessageSource;
 import bandrefilipe.brewer.web.core.ValidationErrors;
-import bandrefilipe.brewer.web.model.Beverage;
-import bandrefilipe.brewer.web.model.BeverageType;
+import bandrefilipe.brewer.web.core.model.Beverage;
+import bandrefilipe.brewer.web.core.model.BeverageType;
 import bandrefilipe.brewer.web.service.BeverageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

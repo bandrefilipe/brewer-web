@@ -1,8 +1,8 @@
 package bandrefilipe.brewer.web.service.model;
 
-import bandrefilipe.brewer.web.model.BeverageFlavor;
-import bandrefilipe.brewer.web.model.BeverageType;
-import bandrefilipe.brewer.web.model.Origin;
+import bandrefilipe.brewer.web.core.model.BeverageFlavor;
+import bandrefilipe.brewer.web.core.model.BeverageType;
+import bandrefilipe.brewer.web.core.model.Origin;
 import lombok.Builder;
 import lombok.Data;
 

@@ -1,7 +1,7 @@
 package bandrefilipe.brewer.web.repository.impl;
 
 import bandrefilipe.brewer.web.integration.response.AllBeverageTypesResponse;
-import bandrefilipe.brewer.web.model.BeverageType;
+import bandrefilipe.brewer.web.core.model.BeverageType;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;

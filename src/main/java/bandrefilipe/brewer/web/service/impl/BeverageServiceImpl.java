@@ -1,7 +1,7 @@
 package bandrefilipe.brewer.web.service.impl;
 
-import bandrefilipe.brewer.web.model.BeverageFlavor;
-import bandrefilipe.brewer.web.model.Origin;
+import bandrefilipe.brewer.web.core.model.BeverageFlavor;
+import bandrefilipe.brewer.web.core.model.Origin;
 import bandrefilipe.brewer.web.repository.BeverageTypeRepository;
 import bandrefilipe.brewer.web.service.BeverageService;
 import bandrefilipe.brewer.web.service.model.BeverageRegistrationData;

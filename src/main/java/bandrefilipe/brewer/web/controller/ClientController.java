@@ -2,7 +2,7 @@ package bandrefilipe.brewer.web.controller;
 
 import bandrefilipe.brewer.web.core.MessageSource;
 import bandrefilipe.brewer.web.core.ValidationErrors;
-import bandrefilipe.brewer.web.model.Client;
+import bandrefilipe.brewer.web.core.model.Client;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
