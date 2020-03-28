@@ -24,7 +24,7 @@ class AsyncTaskExecutorProperties {
     private String threadNamePrefix;
 
     /**
-     * Property: {@code app.sync.task.executor.corePoolSize}<p>
+     * Property: {@code app.async.task.executor.corePoolSize}<p>
      * Default: {@code 1}
      */
     public final int getCorePoolSize() {
@@ -32,7 +32,7 @@ class AsyncTaskExecutorProperties {
     }
 
     /**
-     * Property: {@code app.sync.task.executor.maxPoolSize}<p>
+     * Property: {@code app.async.task.executor.maxPoolSize}<p>
      * Default: {@link AsyncTaskExecutorProperties#getCorePoolSize()}
      */
     public final int getMaxPoolSize() {
@@ -40,7 +40,7 @@ class AsyncTaskExecutorProperties {
     }
 
     /**
-     * Property: {@code app.sync.task.executor.queueCapacity}<p>
+     * Property: {@code app.async.task.executor.queueCapacity}<p>
      * Default: {@link Integer#MAX_VALUE}
      */
     public final int getQueueCapacity() {
@@ -50,7 +50,7 @@ class AsyncTaskExecutorProperties {
     }
 
     /**
-     * Property: {@code app.sync.task.executor.threadNamePrefix}<p>
+     * Property: {@code app.async.task.executor.threadNamePrefix}<p>
      * Default: "{@code SimpleAsyncTaskExecutor-}"
      */
     public final String getThreadNamePrefix() {
