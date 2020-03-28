@@ -9,8 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static java.util.Arrays.asList;
-
 @Slf4j
 @Service
 class BeverageServiceImpl implements BeverageService {
@@ -27,8 +25,8 @@ class BeverageServiceImpl implements BeverageService {
     public BeverageRegistrationData getBeverageRegistrationData() {
         final var futureAllBeverageTypes = beverageTypeRepository.asyncGetAllBeverageTypes();
         final var builder = BeverageRegistrationData.builder()
-                .beverageFlavors(asList(BeverageFlavor.values()))
-                .origins(asList(Origin.values()));
+                .beverageFlavors(BeverageFlavor.values())
+                .origins(Origin.values());
         final var allBeverageTypes = futureAllBeverageTypes.join();
         return builder.beverageTypes(allBeverageTypes)
                 .build();

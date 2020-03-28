@@ -12,7 +12,7 @@ import java.util.List;
 @Builder
 public class BeverageRegistrationData {
 
-    private final List<BeverageFlavor> beverageFlavors;
+    private final BeverageFlavor[] beverageFlavors;
     private final List<BeverageType> beverageTypes;
-    private final List<Origin> origins;
+    private final Origin[] origins;
 }
