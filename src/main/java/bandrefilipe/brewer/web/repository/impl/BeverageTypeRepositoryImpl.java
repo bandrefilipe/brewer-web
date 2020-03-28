@@ -1,7 +1,7 @@
 package bandrefilipe.brewer.web.repository.impl;
 
 import bandrefilipe.brewer.web.integration.BrewerPersistenceClient;
-import bandrefilipe.brewer.web.model.BeverageType;
+import bandrefilipe.brewer.web.core.model.BeverageType;
 import bandrefilipe.brewer.web.repository.BeverageTypeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
@@ -24,14 +24,6 @@ class BeverageTypeRepositoryImpl implements BeverageTypeRepository {
         super();
         this.brewerPersistenceClient = brewerPersistenceClient;
         this.beverageTranslator = beverageTranslator;
-    }
-
-    @Override
-    public List<BeverageType> getAllBeverageTypes() {
-        log.debug("M=getAllBeverageTypes");
-        final var allBeverageTypes = beverageTranslator.translate(brewerPersistenceClient.getAllBeverageTypes());
-        log.debug("M=getAllBeverageTypes: return={}", allBeverageTypes);
-        return allBeverageTypes;
     }
 
     @Async

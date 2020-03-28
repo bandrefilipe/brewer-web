@@ -1,4 +1,4 @@
-package bandrefilipe.brewer.web.model;
+package bandrefilipe.brewer.web.core.model;
 
 import lombok.Data;
 

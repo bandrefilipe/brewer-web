@@ -1,4 +1,4 @@
-package bandrefilipe.brewer.web.model;
+package bandrefilipe.brewer.web.core.model;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -6,10 +6,13 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
-public enum Origin {
+public enum BeverageFlavor {
 
-    NATIONAL("N", "National"),
-    INTERNATIONAL("I", "International");
+    BITTER("B", "Bitter"),
+    FRUITY("F", "Fruity"),
+    SOFT  ("S", "Soft"),
+    STRONG("T", "Strong"),
+    SWEET ("W", "Sweet");
 
     private final String code;
     private final String description;
