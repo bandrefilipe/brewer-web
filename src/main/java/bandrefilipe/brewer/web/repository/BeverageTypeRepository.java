@@ -7,6 +7,5 @@ import java.util.concurrent.CompletableFuture;
 
 public interface BeverageTypeRepository {
 
-    List<BeverageType> getAllBeverageTypes();
     CompletableFuture<List<BeverageType>> asyncGetAllBeverageTypes();
 }

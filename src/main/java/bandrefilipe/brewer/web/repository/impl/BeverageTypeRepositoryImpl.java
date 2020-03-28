@@ -26,14 +26,6 @@ class BeverageTypeRepositoryImpl implements BeverageTypeRepository {
         this.beverageTranslator = beverageTranslator;
     }
 
-    @Override
-    public List<BeverageType> getAllBeverageTypes() {
-        log.debug("M=getAllBeverageTypes");
-        final var allBeverageTypes = beverageTranslator.translate(brewerPersistenceClient.getAllBeverageTypes());
-        log.debug("M=getAllBeverageTypes: return={}", allBeverageTypes);
-        return allBeverageTypes;
-    }
-
     @Async
     @Override
     public CompletableFuture<List<BeverageType>> asyncGetAllBeverageTypes() {

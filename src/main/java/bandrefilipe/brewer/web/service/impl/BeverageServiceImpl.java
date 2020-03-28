@@ -25,15 +25,6 @@ class BeverageServiceImpl implements BeverageService {
 
     @Override
     public BeverageRegistrationData getBeverageRegistrationData() {
-        return BeverageRegistrationData.builder()
-                .beverageFlavors(asList(BeverageFlavor.values()))
-                .beverageTypes(beverageTypeRepository.getAllBeverageTypes())
-                .origins(asList(Origin.values()))
-                .build();
-    }
-
-    @Override
-    public BeverageRegistrationData asyncGetBeverageRegistrationData() {
         final var futureAllBeverageTypes = beverageTypeRepository.asyncGetAllBeverageTypes();
         final var builder = BeverageRegistrationData.builder()
                 .beverageFlavors(asList(BeverageFlavor.values()))

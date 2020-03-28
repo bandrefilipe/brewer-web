@@ -44,7 +44,7 @@ class BeverageController {
     public ModelAndView newBeverageRegistration(final Beverage beverage) {
         log.trace("M=newBeverageRegistration");
         final var modelAndView = new ModelAndView(View.BEVERAGE_REGISTRATION);
-        final var beverageRegistrationData = beverageService.asyncGetBeverageRegistrationData();
+        final var beverageRegistrationData = beverageService.getBeverageRegistrationData();
         modelAndView.addObject("flavors", beverageRegistrationData.getBeverageFlavors());
         modelAndView.addObject("types", beverageRegistrationData.getBeverageTypes());
         modelAndView.addObject("origins", beverageRegistrationData.getOrigins());
