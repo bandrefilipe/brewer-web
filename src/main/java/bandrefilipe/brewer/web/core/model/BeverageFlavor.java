@@ -4,6 +4,12 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toUnmodifiableMap;
+
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public enum BeverageFlavor {
@@ -14,8 +20,15 @@ public enum BeverageFlavor {
     STRONG("T", "Strong"),
     SWEET ("W", "Sweet");
 
+    private static final Map<Object, BeverageFlavor> FLAVORS_BY_CODE = Stream.of(BeverageFlavor.values())
+            .collect(toUnmodifiableMap(BeverageFlavor::getCode, Function.identity()));
+
     private final String code;
     private final String description;
+
+    public static BeverageFlavor from(final Object code) {
+        return FLAVORS_BY_CODE.get(code);
+    }
 
     @Override
     public String toString() {
