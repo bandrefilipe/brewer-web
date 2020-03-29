@@ -20,13 +20,13 @@ public enum BeverageFlavor {
     STRONG("T", "Strong"),
     SWEET ("W", "Sweet");
 
-    private static final Map<Object, BeverageFlavor> FLAVORS_BY_CODE = Stream.of(BeverageFlavor.values())
+    private static final Map<String, BeverageFlavor> FLAVORS_BY_CODE = Stream.of(BeverageFlavor.values())
             .collect(toUnmodifiableMap(BeverageFlavor::getCode, Function.identity()));
 
     private final String code;
     private final String description;
 
-    public static BeverageFlavor from(final Object code) {
+    public static BeverageFlavor getByCode(final String code) {
         return FLAVORS_BY_CODE.get(code);
     }
 

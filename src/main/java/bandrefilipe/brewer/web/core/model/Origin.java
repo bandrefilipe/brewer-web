@@ -17,13 +17,13 @@ public enum Origin {
     NATIONAL("N", "National"),
     INTERNATIONAL("I", "International");
 
-    private static final Map<Object, Origin> ORIGINS_BY_CODE = Stream.of(Origin.values())
+    private static final Map<String, Origin> ORIGINS_BY_CODE = Stream.of(Origin.values())
             .collect(toUnmodifiableMap(Origin::getCode, Function.identity()));
 
     private final String code;
     private final String description;
 
-    public static Origin from(final Object code) {
+    public static Origin getByCode(final String code) {
         return ORIGINS_BY_CODE.get(code);
     }
 

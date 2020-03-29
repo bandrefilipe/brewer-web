@@ -58,15 +58,13 @@ class WebMvcConfig implements WebMvcConfigurer {
     /**
      * As the view carries codes for {@link BeverageFlavor} and {@link Origin} such as {@code "S"}
      * and {@code "N"}, and the model needs to carry its actual enums, a conversion is required.<p>
-     * Implementors of the {@link Converter} interface are required by the {@link FormatterRegistry}
-     * so Spring Web MVC can do the conversion <em>behind the scenes</em><p>
-     * Here, we take advantage of the functional aspect of the Converter interface and pass a
-     * method reference to the static methods within each enum, which do the conversion instead.
+     * Implementors of the {@link Converter} interface are added to the {@link FormatterRegistry}
+     * here so Spring Web MVC can do the conversion <em>behind the scenes</em>.
      */
     @Override
     public void addFormatters(final FormatterRegistry registry) {
         log.debug("Adding formatters and converters");
-        registry.addConverter(BeverageFlavor::from);
-        registry.addConverter(Origin::from);
+        registry.addConverter(BeverageFlavorConverter.INSTANCE);
+        registry.addConverter(OriginConverter.INSTANCE);
     }
 }
