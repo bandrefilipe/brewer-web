@@ -1,9 +1,13 @@
 package bandrefilipe.brewer.web.config;
 
+import bandrefilipe.brewer.web.core.model.BeverageFlavor;
+import bandrefilipe.brewer.web.core.model.Origin;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -49,5 +53,18 @@ class WebMvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         log.debug("Adding resource handler for static content");
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+    }
+
+    /**
+     * As the view carries codes for {@link BeverageFlavor} and {@link Origin} such as {@code "S"}
+     * and {@code "N"}, and the model needs to carry its actual enums, a conversion is required.<p>
+     * Implementors of the {@link Converter} interface are added to the {@link FormatterRegistry}
+     * here so Spring Web MVC can do the conversion <em>behind the scenes</em>.
+     */
+    @Override
+    public void addFormatters(final FormatterRegistry registry) {
+        log.debug("Adding formatters and converters");
+        registry.addConverter(BeverageFlavorConverter.INSTANCE);
+        registry.addConverter(OriginConverter.INSTANCE);
     }
 }

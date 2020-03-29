@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 
 @Data
 public final class Beverage {
@@ -16,4 +17,18 @@ public final class Beverage {
 
     @Size(max = 50, message = "{model.beverage.validation.description.size}")
     private String description;
+
+    private BeverageType type;
+
+    private BeverageFlavor flavor;
+
+    private BigDecimal alcoholContent;
+
+    private Origin origin;
+
+    private BigDecimal unitPrice;
+
+    private BigDecimal commission;
+
+    private Integer stock;
 }
