@@ -66,5 +66,6 @@ class WebMvcConfig implements WebMvcConfigurer {
         log.debug("Adding formatters and converters");
         registry.addConverter(BeverageFlavorConverter.INSTANCE);
         registry.addConverter(OriginConverter.INSTANCE);
+        registry.addConverter(BeverageTypeConverter.INSTANCE);
     }
 }
