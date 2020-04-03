@@ -26,7 +26,6 @@ class WebMvcConfig implements WebMvcConfigurer {
 
     @Autowired
     WebMvcConfig(final MessageSource messageSource) {
-        super();
         this.messageSource = messageSource;
     }
 

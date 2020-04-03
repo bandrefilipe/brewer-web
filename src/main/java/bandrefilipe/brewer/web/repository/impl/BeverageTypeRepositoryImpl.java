@@ -21,7 +21,6 @@ class BeverageTypeRepositoryImpl implements BeverageTypeRepository {
 
     BeverageTypeRepositoryImpl(final BrewerPersistenceClient brewerPersistenceClient,
                                final BeverageTranslator beverageTranslator) {
-        super();
         this.brewerPersistenceClient = brewerPersistenceClient;
         this.beverageTranslator = beverageTranslator;
     }

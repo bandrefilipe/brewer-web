@@ -17,7 +17,6 @@ class BeverageServiceImpl implements BeverageService {
 
     @Autowired
     BeverageServiceImpl(final BeverageTypeRepository beverageTypeRepository) {
-        super();
         this.beverageTypeRepository = beverageTypeRepository;
     }
 

@@ -29,7 +29,6 @@ class UserController {
     @Autowired
     UserController(final MessageSource messageSource,
                    final ValidationErrors validationErrors) {
-        super();
         log.debug("Creating bean {}", UserController.class.getSimpleName());
         this.messageSource = messageSource;
         this.validationErrors = validationErrors;
