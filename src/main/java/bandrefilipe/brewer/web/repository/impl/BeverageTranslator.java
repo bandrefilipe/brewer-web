@@ -24,7 +24,7 @@ class BeverageTranslator {
                 .collect(toList());
     }
 
-    private BeverageType translate(final AllBeverageTypesResponse response) {
+    BeverageType translate(final AllBeverageTypesResponse response) {
         return ofNullable(response)
                 .map(res -> new BeverageType(res.getId(), res.getName()))
                 .orElse(null);
