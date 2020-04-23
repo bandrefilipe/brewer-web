@@ -1,7 +1,10 @@
 package bandrefilipe.brewer.web.service.impl;
 
+import bandrefilipe.brewer.web.core.model.Beverage;
 import bandrefilipe.brewer.web.core.model.BeverageFlavor;
 import bandrefilipe.brewer.web.core.model.Origin;
+import bandrefilipe.brewer.web.integration.response.BeverageRegistrationResponse;
+import bandrefilipe.brewer.web.repository.BeverageRepository;
 import bandrefilipe.brewer.web.repository.BeverageTypeRepository;
 import bandrefilipe.brewer.web.service.BeverageService;
 import bandrefilipe.brewer.web.service.model.BeverageRegistrationData;
@@ -14,10 +17,13 @@ import org.springframework.stereotype.Service;
 class BeverageServiceImpl implements BeverageService {
 
     private BeverageTypeRepository beverageTypeRepository;
+    private BeverageRepository beverageRepository;
 
     @Autowired
-    BeverageServiceImpl(final BeverageTypeRepository beverageTypeRepository) {
+    BeverageServiceImpl(final BeverageTypeRepository beverageTypeRepository,
+                        final BeverageRepository beverageRepository) {
         this.beverageTypeRepository = beverageTypeRepository;
+        this.beverageRepository = beverageRepository;
     }
 
     @Override
@@ -29,5 +35,15 @@ class BeverageServiceImpl implements BeverageService {
         final var allBeverageTypes = futureAllBeverageTypes.join();
         return builder.beverageTypes(allBeverageTypes)
                 .build();
+    }
+
+    @Override
+    public BeverageRegistrationResponse registerNewBeverage(final Beverage beverage) {
+        log.debug("M=registerNewBeverage: beverage={}", beverage);
+        final var response = BeverageRegistrationModelConverter.INSTANCE.convert(beverage)
+                .map(beverageRepository::persist)
+                .orElseThrow(RuntimeException::new);
+        log.debug("M=registerNewBeverage: return={}", response);
+        return response;
     }
 }

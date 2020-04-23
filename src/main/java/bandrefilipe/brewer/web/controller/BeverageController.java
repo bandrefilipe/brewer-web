@@ -60,6 +60,7 @@ class BeverageController {
             return newBeverageRegistration(beverage);
         }
         log.debug("M=newBeverageRegistration: beverage={}", beverage);
+        beverageService.registerNewBeverage(beverage);
         redirectAttributes.addFlashAttribute("message", messageSource.getMessage("new.beverage.registration.success"));
         return new ModelAndView(Redirect.BEVERAGES_NEW);
     }
