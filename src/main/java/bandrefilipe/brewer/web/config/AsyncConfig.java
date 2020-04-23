@@ -28,7 +28,6 @@ class AsyncConfig {
 
     @Autowired
     AsyncConfig(final AsyncTaskExecutorProperties properties) {
-        super();
         corePoolSize = properties.getCorePoolSize();
         maxPoolSize = properties.getMaxPoolSize();
         queueCapacity = properties.getQueueCapacity();

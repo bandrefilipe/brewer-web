@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.lang.NonNull;
 
 /**
  * A package-private singleton to be registered as a WebMvc converter.
@@ -16,7 +17,7 @@ class BeverageFlavorConverter implements Converter<String, BeverageFlavor> {
     public static final BeverageFlavorConverter INSTANCE = new BeverageFlavorConverter();
 
     @Override
-    public BeverageFlavor convert(final String code) {
+    public BeverageFlavor convert(@NonNull final String code) {
         log.debug("M=convert: code={}", code);
         return BeverageFlavor.getByCode(code);
     }

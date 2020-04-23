@@ -22,7 +22,6 @@ class MessageSourceImpl implements bandrefilipe.brewer.web.core.MessageSource {
 
     @Autowired
     MessageSourceImpl(final MessageSource messageSource) {
-        super();
         this.messageSource = messageSource;
         this.locale = Locale.getDefault();
     }

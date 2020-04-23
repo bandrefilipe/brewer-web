@@ -43,10 +43,10 @@
 
                 <div class="row">
                     <div class="col-sm-3  form-group">
-                        <label for="_type">Type</label>
+                        <label for="type">Type</label>
                         <div class="bw-field-action">
-                            <select id="_type" class="form-control">
-                                <option value="" disabled selected>Select type...</option>
+                            <select id="type" class="form-control" name="type">
+                                <option value="" th:disabled="disabled" th:selected="selected">Select type...</option>
                                 <option th:each="type : ${types}" th:value="${type.id}" th:text="${type.name}"></option>
                             </select>
 

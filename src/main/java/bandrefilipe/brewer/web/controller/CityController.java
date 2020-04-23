@@ -28,7 +28,6 @@ class CityController {
     @Autowired
     CityController(final MessageSource messageSource,
                    final ValidationErrors validationErrors) {
-        super();
         log.debug("Creating bean {}", CityController.class.getSimpleName());
         this.messageSource = messageSource;
         this.validationErrors = validationErrors;

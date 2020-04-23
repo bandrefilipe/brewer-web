@@ -33,7 +33,6 @@ class BeverageController {
     BeverageController(final MessageSource messageSource,
                        final ValidationErrors validationErrors,
                        final BeverageService beverageService) {
-        super();
         log.debug("Creating bean {}", BeverageController.class.getSimpleName());
         this.messageSource = messageSource;
         this.validationErrors = validationErrors;
@@ -61,6 +60,7 @@ class BeverageController {
             return newBeverageRegistration(beverage);
         }
         log.debug("M=newBeverageRegistration: beverage={}", beverage);
+        beverageService.registerNewBeverage(beverage);
         redirectAttributes.addFlashAttribute("message", messageSource.getMessage("new.beverage.registration.success"));
         return new ModelAndView(Redirect.BEVERAGES_NEW);
     }
